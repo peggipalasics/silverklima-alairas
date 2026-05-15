@@ -106,12 +106,22 @@
     // change ASSET_BASE below and republish.
     const ASSET_BASE = 'https://peggipalasics.github.io/silverklima-alairas';
 
+    // Per-banner `href` decides where the click goes from the email:
+    //   - Zöld Település banners (varosi, foldgomb, napsutes) → zoldtelepules.hu
+    //   - Általános banners (csovekSotet, csovekVilagos)      → silverklima.hu
+    const HREF_ZOLD   = 'https://www.zoldtelepules.hu';
+    const HREF_SILVER = 'https://silverklima.hu';
+    const ALT_ZOLD   = '1 klíma = 1 fa — Zöld Település Program · zoldtelepules.hu';
+    const ALT_SILVER = 'Silver Klíma — Klíma · Hőszivattyú · Légtechnika · Épületgépészet · silverklima.hu';
+
     const BANNERS = {
       varosi: {
         label: 'Városi · Zöld Település',
         subtitle: 'Illusztráció — emberek faültetés közben, animált',
         preview: 'assets/banner-varosi.gif',
         production: `${ASSET_BASE}/assets/banner-varosi.gif`,
+        href: HREF_ZOLD,
+        alt: ALT_ZOLD,
         w: 520, h: 104,
       },
       foldgomb: {
@@ -119,6 +129,8 @@
         subtitle: 'Illusztráció — földgömb és növények, animált',
         preview: 'assets/banner-foldgomb.gif',
         production: `${ASSET_BASE}/assets/banner-foldgomb.gif`,
+        href: HREF_ZOLD,
+        alt: ALT_ZOLD,
         w: 520, h: 104,
       },
       napsutes: {
@@ -126,6 +138,8 @@
         subtitle: 'Fotó — napsütés a lombkoronán át, animált',
         preview: 'assets/banner-napsutes.gif',
         production: `${ASSET_BASE}/assets/banner-napsutes.gif`,
+        href: HREF_ZOLD,
+        alt: ALT_ZOLD,
         w: 520, h: 104,
       },
       csovekSotet: {
@@ -133,6 +147,8 @@
         subtitle: 'Fotó — fémcsövek sötét háttéren, animált',
         preview: 'assets/banner-csovek-sotet.gif',
         production: `${ASSET_BASE}/assets/banner-csovek-sotet.gif`,
+        href: HREF_SILVER,
+        alt: ALT_SILVER,
         w: 520, h: 104,
       },
       csovekVilagos: {
@@ -140,12 +156,13 @@
         subtitle: 'Fotó — fémcsövek világos háttéren, animált',
         preview: 'assets/banner-csovek-vilagos.gif',
         production: `${ASSET_BASE}/assets/banner-csovek-vilagos.gif`,
+        href: HREF_SILVER,
+        alt: ALT_SILVER,
         w: 520, h: 104,
       },
     };
 
     const DEFAULT_BANNER = 'varosi';
-    const BANNER_ALT = '1 klíma = 1 fa — Zöld Település Program · zoldtelepules.hu';
 
     const esc = (s) =>
       String(s ?? '')
@@ -172,12 +189,14 @@
       const key = (urls && urls.bannerKey) || DEFAULT_BANNER;
       const asset = BANNERS[key] || BANNERS[DEFAULT_BANNER];
       const useProduction = !!(urls && urls.production);
-      const src = useProduction ? asset.production : asset.preview;
+      const src  = useProduction ? asset.production : asset.preview;
+      const href = asset.href || HREF_SILVER;
+      const alt  = asset.alt  || '';
       const w = width || asset.w;
       const h = Math.round(asset.h * (w / asset.w));
       return `
-<a href="https://www.zoldtelepules.hu" style="text-decoration: none; border: 0; display: inline-block;">
-  <img src="${esc(src)}" width="${w}" height="${h}" alt="${esc(BANNER_ALT)}" style="display: block; border: 0; outline: none; text-decoration: none; width: ${w}px; height: ${h}px; max-width: 100%;">
+<a href="${esc(href)}" style="text-decoration: none; border: 0; display: inline-block;">
+  <img src="${esc(src)}" width="${w}" height="${h}" alt="${esc(alt)}" style="display: block; border: 0; outline: none; text-decoration: none; width: ${w}px; height: ${h}px; max-width: 100%;">
 </a>`.trim();
     }
 
