@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Klíma · Aláírás Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Hanken Grotesk', Arial, Helvetica, sans-serif;
+      background: #F6F7F8;
+      color: #1A1F22;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    button { font-family: inherit; }
+    a { color: inherit; }
+    input:focus {
+      border-color: #22c55e !important;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+    }
+    button:hover {
+      transform: translateY(-1px);
+    }
+    button:active {
+      transform: translateY(0) scale(0.99);
+    }
+    button[style*="border: 1.5px solid rgb(228, 231, 233)"]:hover,
+    button[style*="border: 1.5px solid #E4E7E9"]:hover {
+      border-color: #22c55e !important;
+      color: #1A1F22 !important;
+    }
+    /* Signature preview links: keep the inline-styled colours but suppress
+       default underline so the rendered signature looks the same here as
+       it will once pasted into a mail client. */
+    .sk-sig-preview a { text-decoration: none; }
+
+    ol { counter-reset: step; list-style: none; }
+    ol > li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 28px;
+    }
+    ol > li::before {
+      content: counter(step, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: #15803d;
+      font-weight: 500;
+    }
+    ol > li > strong {
+      color: #1A1F22;
+      font-weight: 600;
+    }
+    ol > li > em {
+      color: #1A1F22;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="signatures.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
