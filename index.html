@@ -227,9 +227,10 @@
     }
 
     // ---- Variant 2: Editorial ----
-    // Name first (big, with period), italic position, blue accent bar,
-    // single-line contact row, then logo (moved up — sits ABOVE the banner
-    // alone, no text labels), then the banner at the very bottom.
+    // "Üdvözlettel," greeting (so user doesn't retype it), then name first
+    // (big, with period), italic position, blue accent bar, single-line
+    // contact row, then logo + badge (moved up, above the banner), then the
+    // banner at the very bottom.
     function buildEditorial(data, urls) {
       const { name, position, phone, email, website } = data;
       const site = stripProto(website) || 'silverklima.hu';
@@ -238,6 +239,9 @@
 
       return `
 <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="font-family: ${FONT}; color: ${COLORS.ink}; border-collapse: collapse;">
+  <tr>
+    <td style="font-family: ${FONT}; font-size: 14px; line-height: 1.5; color: ${COLORS.ink}; padding: 0 0 14px 0; mso-line-height-rule: exactly;">Üdvözlettel,</td>
+  </tr>
   <tr>
     <td style="padding: 0;">
       <div style="font-family: ${FONT}; font-size: 22px; font-weight: 800; color: ${COLORS.ink}; letter-spacing: -0.025em; line-height: 1.05; mso-line-height-rule: exactly;">${esc(nameWithDot)}</div>
@@ -296,6 +300,9 @@
 
       return `
 <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="font-family: ${FONT}; color: ${COLORS.ink}; border-collapse: collapse;">
+  <tr>
+    <td style="font-family: ${FONT}; font-size: 14px; line-height: 1.5; color: ${COLORS.ink}; padding: 0 0 12px 0; mso-line-height-rule: exactly;">Üdvözlettel,</td>
+  </tr>
   <tr>
     <td style="padding: 0 0 12px 0; vertical-align: top;">
       <table cellpadding="0" cellspacing="0" border="0" role="presentation">
@@ -406,6 +413,8 @@
       const { name, position, phone, email, website } = data;
       const site = stripProto(website) || 'silverklima.hu';
       const lines = [
+        'Üdvözlettel,',
+        '',
         name,
         position && position.trim() ? position : null,
         '— Silver Klíma —',
@@ -414,7 +423,7 @@
         site,
         '',
         '✦ 1 klíma = 1 fa — Zöld Település Program · zoldtelepules.hu',
-      ].filter(Boolean);
+      ].filter((l) => l !== null && l !== undefined);
       return lines.join('\n');
     }
 
@@ -557,9 +566,6 @@
                 <span style={cardStyles.emailMetaKey}>Tárgy</span>
                 <span style={cardStyles.emailMetaVal}>Visszaigazolás · felmérés időpont</span>
               </div>
-              <div style={cardStyles.emailBody}>
-                <span style={{ color: COLORS.silver }}>Üdvözlettel,</span>
-              </div>
               <div
                 ref={previewRef}
                 className="sk-sig-preview"
@@ -645,8 +651,6 @@
                   <span style={{ color: COLORS.silver }}>Kedves Anna,</span>
                   <br /><br />
                   <span style={{ color: COLORS.silver }}>Köszönöm a visszajelzést — a felmérést a jövő héten csütörtökön 14:00-kor be tudjuk illeszteni.</span>
-                  <br /><br />
-                  <span style={{ color: COLORS.silver }}>Üdvözlettel,</span>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: html }} />
               </div>
