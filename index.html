@@ -246,15 +246,14 @@
     }
 
     // ---- Variant 2: Editorial ----
-    // "Üdvözlettel," greeting (so user doesn't retype it), then name first
-    // (big, with period), italic position, blue accent bar, single-line
-    // contact row, then logo + badge (moved up, above the banner), then the
-    // banner at the very bottom.
+    // "Üdvözlettel," greeting (so user doesn't retype it), then name big,
+    // italic position, blue accent bar, single-line contact row, then logo
+    // + badge (moved up, above the banner), then the banner at the bottom.
     function buildEditorial(data, urls) {
       const { name, position, phone, email, website } = data;
       const site = stripProto(website) || 'silverklima.hu';
       const siteHref = ensureHttp(website || 'silverklima.hu');
-      const nameWithDot = String(name || '').trim().replace(/\.$/, '') + '.';
+      const cleanName = String(name || '').trim().replace(/\.$/, '');
 
       return `
 <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="font-family: ${FONT}; color: ${COLORS.ink}; border-collapse: collapse;">
@@ -263,7 +262,7 @@
   </tr>
   <tr>
     <td style="padding: 0;">
-      <div style="font-family: ${FONT}; font-size: 22px; font-weight: 800; color: ${COLORS.ink}; letter-spacing: -0.025em; line-height: 1.05; mso-line-height-rule: exactly;">${esc(nameWithDot)}</div>
+      <div style="font-family: ${FONT}; font-size: 22px; font-weight: 800; color: ${COLORS.ink}; letter-spacing: -0.025em; line-height: 1.05; mso-line-height-rule: exactly;">${esc(cleanName)}</div>
       ${positionLine(position, 13, true)}
     </td>
   </tr>
