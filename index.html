@@ -266,7 +266,16 @@
   </tr>
   <tr>
     <td style="padding: 0 0 10px 0;">
-      <img src="${esc(urls.logo)}" width="96" height="40" alt="Silver Klíma" style="display: block; border: 0; outline: none; text-decoration: none; width: 96px; height: 40px;">
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse: collapse;">
+        <tr>
+          <td style="padding: 0 14px 0 0; vertical-align: middle;">
+            <img src="${esc(urls.logo)}" width="96" height="40" alt="Silver Klíma" style="display: block; border: 0; outline: none; text-decoration: none; width: 96px; height: 40px;">
+          </td>
+          <td style="padding: 0; vertical-align: middle;">
+            <img src="${esc(urls.badge)}" width="56" height="55" alt="GYMSM Kamara által ajánlott vállalkozás 2026" title="GYMSM Kamara által ajánlott vállalkozás 2026" style="display: block; border: 0; outline: none; text-decoration: none; width: 56px; height: 55px;">
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
   <tr>
@@ -293,6 +302,8 @@
         <tr>
           <td style="padding: 0 18px 0 0; vertical-align: top;">
             <img src="${esc(urls.logo)}" width="104" height="43" alt="Silver Klíma" style="display: block; border: 0; outline: none; text-decoration: none; width: 104px; height: 43px;">
+            <div style="height: 8px; line-height: 8px; font-size: 8px;">&nbsp;</div>
+            <img src="${esc(urls.badge)}" width="72" height="70" alt="GYMSM Kamara által ajánlott vállalkozás 2026" title="GYMSM Kamara által ajánlott vállalkozás 2026" style="display: block; border: 0; outline: none; text-decoration: none; width: 72px; height: 70px;">
           </td>
           <td style="padding: 0; vertical-align: top;">
             <div style="font-family: ${FONT}; font-size: 14px; font-weight: 700; color: ${COLORS.ink}; line-height: 1.25; mso-line-height-rule: exactly; letter-spacing: -0.005em;">${esc(name)}</div>
@@ -428,11 +439,19 @@
       website: 'silverklima.hu',
     };
 
-    const LOGO_PRODUCTION = `${ASSET_BASE}/assets/logo-silverklima.png`;
-    const LOGO_PREVIEW    = 'assets/logo-silverklima.png';
+    const LOGO_PRODUCTION  = `${ASSET_BASE}/assets/logo-silverklima.png`;
+    const LOGO_PREVIEW     = 'assets/logo-silverklima.png';
+    // GYMSM Kamara által ajánlott vállalkozás 2026 védjegy
+    const BADGE_PRODUCTION = `${ASSET_BASE}/assets/badge-kik-2026.png`;
+    const BADGE_PREVIEW    = 'assets/badge-kik-2026.png';
 
     function buildUrls(bannerKey, { production = false } = {}) {
-      return { logo: production ? LOGO_PRODUCTION : LOGO_PREVIEW, bannerKey, production };
+      return {
+        logo:  production ? LOGO_PRODUCTION  : LOGO_PREVIEW,
+        badge: production ? BADGE_PRODUCTION : BADGE_PREVIEW,
+        bannerKey,
+        production,
+      };
     }
 
     async function copyRich(html, plain) {
