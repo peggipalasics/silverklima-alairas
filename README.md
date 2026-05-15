@@ -24,7 +24,7 @@ Outlook-kompatibilis email aláírás generátor a Silver Klíma munkatársak sz
 3. Válassz bannert.
 4. Válassz elrendezést, és nyomd meg a **Másolás Outlookba** gombot.
 5. **Outlook Desktop:** Fájl → Beállítások → Levél → Aláírások → Új → Ctrl+V → Mentés.
-6. **Outlook Web / Mac:** Beállítások → Levél → Megírás és válaszadás → Beillesztés.
+6. **Outlook Web:** Beállítások → Fiók → Aláírás → Ctrl+V → Mentés.
 
 ## Fejlesztőknek
 
