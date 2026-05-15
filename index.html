@@ -100,40 +100,46 @@
       bg: '#FFFFFF',
     };
 
+    // The studio is hosted on GitHub Pages; the production URLs point at
+    // that origin so the "HTML kód" export resolves images everywhere.
+    // When the assets are eventually moved under silverklima.hu/email/,
+    // change ASSET_BASE below and republish.
+    const ASSET_BASE = 'https://peggipalasics.github.io/silverklima-alairas';
+
     const BANNERS = {
       varosi: {
         label: 'Városi · Zöld Település',
         subtitle: 'Illusztráció — emberek faültetés közben, animált',
         preview: 'assets/banner-varosi.gif',
-        production: 'https://silverklima.hu/email/banner-varosi.gif',
+        production: `${ASSET_BASE}/assets/banner-varosi.gif`,
         w: 520, h: 104,
       },
       foldgomb: {
         label: 'Földgömb · Zöld Település',
         subtitle: 'Illusztráció — földgömb és növények, animált',
         preview: 'assets/banner-foldgomb.gif',
-        production: 'https://silverklima.hu/email/banner-foldgomb.gif',
+        production: `${ASSET_BASE}/assets/banner-foldgomb.gif`,
         w: 520, h: 104,
       },
       napsutes: {
         label: 'Napsütés · Zöld Település',
         subtitle: 'Fotó — napsütés a lombkoronán át, animált',
         preview: 'assets/banner-napsutes.gif',
-        production: 'https://silverklima.hu/email/banner-napsutes.gif',
+        production: `${ASSET_BASE}/assets/banner-napsutes.gif`,
         w: 520, h: 104,
       },
       csovekSotet: {
         label: 'Csövek (sötét) · Általános',
         subtitle: 'Fotó — fémcsövek sötét háttéren, animált',
         preview: 'assets/banner-csovek-sotet.gif',
-        production: 'https://silverklima.hu/email/banner-csovek-sotet.gif',
+        production: `${ASSET_BASE}/assets/banner-csovek-sotet.gif`,
         w: 520, h: 104,
       },
       csovekVilagos: {
         label: 'Csövek (világos) · Általános',
         subtitle: 'Fotó — fémcsövek világos háttéren, animált',
         preview: 'assets/banner-csovek-vilagos.gif',
-        production: 'https://silverklima.hu/email/banner-csovek-vilagos.gif',
+        production: `${ASSET_BASE}/assets/banner-csovek-vilagos.gif`,
         w: 520, h: 104,
       },
     };
@@ -422,7 +428,7 @@
       website: 'silverklima.hu',
     };
 
-    const LOGO_PRODUCTION = 'https://silverklima.hu/email/silverklima-logo.png';
+    const LOGO_PRODUCTION = `${ASSET_BASE}/assets/logo-silverklima.png`;
     const LOGO_PREVIEW    = 'assets/logo-silverklima.png';
 
     function buildUrls(bannerKey, { production = false } = {}) {
@@ -797,7 +803,7 @@
                   A <strong>logó</strong> az előnézetben a helyi képet használja. Outlookba másoláskor az aktuálisan megjelenő képet viszi át a vágólap. Ha nem jelenne meg, használd az <em>Aláírás-szerkesztőben</em> a <em>Kép beszúrása</em> gombot, és tedd be a Silver Klíma logót.
                 </li>
                 <li>
-                  A <strong>HTML kód</strong> gombbal a forráskódot kapod meg (production logó-URL-lel: <code style={appStyles.code}>silverklima.hu/email/silverklima-logo.png</code>) — ezt használd, ha az Outlook aláírás-fájljába (.htm) közvetlenül szerkesztesz.
+                  A <strong>HTML kód</strong> gombbal a forráskódot kapod meg (a képek a stúdió GitHub Pages-szervezéséről hivatkozva) — ezt használd, ha az Outlook aláírás-fájljába (.htm) közvetlenül szerkesztesz.
                 </li>
               </ol>
             </section>
